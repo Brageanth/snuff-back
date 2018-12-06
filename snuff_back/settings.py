@@ -78,16 +78,6 @@ WSGI_APPLICATION = 'snuff_back.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'snuff-back',
-        'USER': 'snuff',
-        'PASSWORD': 'snuff2018',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
