@@ -1,6 +1,6 @@
-from .models import Prenda
+from .models import Prenda, Colore, Talla, Estampado
 from rest_framework import viewsets
-from .serializers import PrendaSerializer
+from .serializers import PrendaSerializer, ColorSerializer, TallaSerializer, EstampadoSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -47,4 +47,118 @@ def prenda_detail(request, pk):
 
     elif request.method == 'DELETE':
         prenda.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def colorView(request, format=None):
+    if request.method == 'GET':
+        color = Colore.objects.all()
+        serializer = ColorSerializer
+        return Response(serializer(context={'request': request}).data)
+
+    elif request.method == 'POST':
+        serializer = ColorSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def color_detail(request, pk):
+    try:
+        color = Color.objects.get(pk=pk)
+    except color.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ColorSerializer(color)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ColorSerializer(color, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        color.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def tallaView(request, format=None):
+    if request.method == 'GET':
+        talla = Talla.objects.all()
+        serializer = ColorSerializer
+        return Response(serializer(context={'request': request}).data)
+
+    elif request.method == 'POST':
+        serializer = ColorSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def talla_detail(request, pk):
+    try:
+        talla = Color.objects.get(pk=pk)
+    except talla.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ColorSerializer(talla)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ColorSerializer(talla, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        talla.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def estampadoView(request, format=None):
+    if request.method == 'GET':
+        estampado = Estampado.objects.all()
+        serializer = ColorSerializer
+        return Response(serializer(context={'request': request}).data)
+
+    elif request.method == 'POST':
+        serializer = ColorSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def estampado_detail(request, pk):
+    try:
+        estampado = Color.objects.get(pk=pk)
+    except estampado.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ColorSerializer(estampado)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ColorSerializer(estampado, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        estampado.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
