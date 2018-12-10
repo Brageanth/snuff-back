@@ -6,6 +6,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     path('', views.usuarioView),
     path('<int:pk>', views.usuario_detail),
+    path('reset', views.resetPassword),
 ]
 
 

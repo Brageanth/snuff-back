@@ -1,9 +1,27 @@
 from .models import Usuario
 from rest_framework import viewsets
-from .serializers import UsuarioSerializer
+from .serializers import UsuarioSerializer, ResetSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+
+@api_view(['GET', 'POST'])
+def resetPassword(request, format=None):
+    """
+    List all code usuarios, or create a new usuario.
+    """
+    if request.method == 'GET':
+        usuarios = Usuario.objects.all()
+        serializer = ResetSerializer
+        return Response(serializer(context={'request': request}).data)
+
+    elif request.method == 'POST':
+        serializer = ResetSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            print(serializer.data[0])
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'POST'])
