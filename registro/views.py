@@ -27,7 +27,7 @@ def resetPassword(request, format=None):
                 asunto = "Codigo para restablecer tu contraseña de Snuff"
                 mensaje = str(codigo)
                 mail = EmailMessage(asunto, mensaje, to=[mailAddress])
-                """mail.send()"""
+                mail.send()
                 return Response(codigo, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
