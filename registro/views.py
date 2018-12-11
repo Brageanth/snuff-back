@@ -4,6 +4,8 @@ from .serializers import UsuarioSerializer, ResetSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.core.mail import EmailMessage
+from random import randint
 
 
 @api_view(['GET', 'POST'])
@@ -19,8 +21,14 @@ def resetPassword(request, format=None):
     elif request.method == 'POST':
         serializer = ResetSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            print(serializer.data[0])
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            mailAddress=serializer.data["correo"]
+            if Usuario.objects.filter(correo=mailAddress).exists():
+                codigo = randint(1000, 9999)
+                asunto = "Codigo para restablecer tu contraseña de Snuff"
+                mensaje = str(codigo)
+                mail = EmailMessage(asunto, mensaje, to=[mailAddress])
+                mail.send()
+                return Response(codigo, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
