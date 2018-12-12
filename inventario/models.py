@@ -21,6 +21,8 @@ class Prenda(models.Model):
         default=CHAQUETA,
     )
     cantidad = models.IntegerField()
+    precio = models.IntegerField()
+    imagen = models.ImageField()
 
 
     def __str__(self):
@@ -31,6 +33,7 @@ class Colore(models.Model):
     color = models.CharField(max_length=50)
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
+    imagen = models.ImageField()
 
     def __str__(self):
         return self.color
@@ -76,6 +79,7 @@ class Estampado(models.Model):
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     stock = models.BooleanField()
+    imagen = models.ImageField()
 
     def __str__(self):
         return self.nombre

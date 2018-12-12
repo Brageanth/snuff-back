@@ -14,6 +14,7 @@ class Personalizada(models.Model):
     precio = models.IntegerField()
     fabricada = models.BooleanField()
     entregada = models.BooleanField()
+    imagen = models.ImageField()
 
 
     def __str__(self):
