@@ -1,5 +1,5 @@
 from .models import Prenda, Colore, Talla, Estampado
-from rest_framework import serializers
+from rest_framework import serializers, viewsets
 
 
 class PrendaSerializer(serializers.ModelSerializer):

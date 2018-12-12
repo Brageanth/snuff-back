@@ -14,7 +14,7 @@ def prendaView(request, format=None):
     if request.method == 'GET':
         prendas = Prenda.objects.all()
         serializer = PrendaSerializer
-        return Response(serializer(context={'request': request}).data)
+        return Response(serializer(prendas, many=True).data)
 
     elif request.method == 'POST':
         serializer = PrendaSerializer(data=request.data, context={'request': request})
