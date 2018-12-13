@@ -29,6 +29,8 @@ def resetPassword(request, format=None):
                 mail = EmailMessage(asunto, mensaje, to=[mailAddress])
                 mail.send()
                 return Response(codigo, status=status.HTTP_201_CREATED)
+            else:
+                return Response(codigo, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -40,7 +42,7 @@ def usuarioView(request, format=None):
     if request.method == 'GET':
         usuarios = Usuario.objects.all()
         serializer = UsuarioSerializer
-        return Response(serializer(context={'request': request}).data)
+        return Response(serializer(usuarios, many=True).data)
 
     elif request.method == 'POST':
         serializer = UsuarioSerializer(data=request.data, context={'request': request})
@@ -56,7 +58,7 @@ def usuario_detail(request, pk):
     Retrieve, update or delete a code usuario.
     """
     try:
-        usuario = usuario.objects.get(pk=pk)
+        usuario = Usuario.objects.get(pk=pk)
     except usuario.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
