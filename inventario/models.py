@@ -70,7 +70,6 @@ class Estampado(models.Model):
         (ARTE, 'Arte'),
         (MUSICA, 'Musica'),
     )
-    imagen = models.ImageField()
     nombre = models.CharField(max_length=100)
     categoria = models.CharField(
         max_length=2,
@@ -78,6 +77,7 @@ class Estampado(models.Model):
         default=CINESERIES,
     )
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
+    color = models.ForeignKey(Colore, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     stock = models.BooleanField()
     imagenPrenda = models.ImageField()
