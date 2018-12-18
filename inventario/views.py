@@ -92,11 +92,11 @@ def color_detail(request, pk):
 def tallaView(request, format=None):
     if request.method == 'GET':
         talla = Talla.objects.all()
-        serializer = ColorSerializer
+        serializer = TallaSerializer
         return Response(serializer(talla, many=True).data)
 
     elif request.method == 'POST':
-        serializer = ColorSerializer(data=request.data, context={'request': request})
+        serializer = TallaSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -106,16 +106,16 @@ def tallaView(request, format=None):
 @api_view(['GET', 'PUT', 'DELETE'])
 def talla_detail(request, pk):
     try:
-        talla = Color.objects.get(pk=pk)
+        talla = Talla.objects.get(pk=pk)
     except talla.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ColorSerializer(talla)
+        serializer = TallaSerializer(talla)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ColorSerializer(talla, data=request.data)
+        serializer = TallaSerializer(talla, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
