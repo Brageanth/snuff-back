@@ -80,7 +80,8 @@ class Estampado(models.Model):
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     stock = models.BooleanField()
-    imagen = models.ImageField()
+    imagenPrenda = models.ImageField()
+    imagenEstampado = models.ImageField()
 
     def __str__(self):
         return self.nombre
