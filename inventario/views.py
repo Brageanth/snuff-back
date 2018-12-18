@@ -93,7 +93,7 @@ def tallaView(request, format=None):
     if request.method == 'GET':
         talla = Talla.objects.all()
         serializer = ColorSerializer
-        return Response(serializer(context={'request': request}).data)
+        return Response(serializer(talla, many=True).data)
 
     elif request.method == 'POST':
         serializer = ColorSerializer(data=request.data, context={'request': request})
