@@ -130,11 +130,11 @@ def talla_detail(request, pk):
 def estampadoView(request, format=None):
     if request.method == 'GET':
         estampado = Estampado.objects.all()
-        serializer = ColorSerializer
-        return Response(serializer(context={'request': request}).data)
+        serializer = EstampadoSerializer
+        return Response(serializer(estampado, many=True).data)
 
     elif request.method == 'POST':
-        serializer = ColorSerializer(data=request.data, context={'request': request})
+        serializer = EstampadoSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -144,16 +144,16 @@ def estampadoView(request, format=None):
 @api_view(['GET', 'PUT', 'DELETE'])
 def estampado_detail(request, pk):
     try:
-        estampado = Color.objects.get(pk=pk)
+        estampado = Estampado.objects.get(pk=pk)
     except estampado.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = ColorSerializer(estampado)
+        serializer = EstampadoSerializer(estampado)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = ColorSerializer(estampado, data=request.data)
+        serializer = EstampadoSerializer(estampado, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
