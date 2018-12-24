@@ -82,6 +82,7 @@ class Estampado(models.Model):
     stock = models.BooleanField()
     imagenPrenda = models.ImageField()
     imagenEstampado = models.ImageField()
+    imagenPreview = models.ImageField()
 
     def __str__(self):
         return self.nombre
