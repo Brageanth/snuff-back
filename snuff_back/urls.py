@@ -22,4 +22,4 @@ urlpatterns = [
     path('inventario/', include('inventario.urls')),
     path('compra/', include('compra.urls')),
     path('campania/', include('campania.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
