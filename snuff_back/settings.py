@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'inventario',
     'compra',
     'campania',
+    'empresa',
 ]
 
 MIDDLEWARE = [
