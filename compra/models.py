@@ -15,6 +15,8 @@ class Personalizada(models.Model):
     fabricada = models.BooleanField()
     entregada = models.BooleanField()
     imagen = models.ImageField()
+    carrito = models.BooleanField()
+    pagado = models.BooleanField()
 
 
     def __str__(self):
