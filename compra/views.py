@@ -14,7 +14,7 @@ def personalizadaView(request, format=None):
     if request.method == 'GET':
         personalizadas = Personalizada.objects.all()
         serializer = PersonalizadaSerializer
-        return Response(serializer(context={'request': request}).data)
+        return Response(serializer(personalizadas, many=True).data)
 
     elif request.method == 'POST':
         serializer = PersonalizadaSerializer(data=request.data, context={'request': request})
