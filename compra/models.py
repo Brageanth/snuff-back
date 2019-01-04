@@ -14,7 +14,6 @@ class Personalizada(models.Model):
     precio = models.IntegerField()
     fabricada = models.BooleanField()
     entregada = models.BooleanField()
-    imagen = models.ImageField()
     carrito = models.BooleanField()
     pagado = models.BooleanField()
 
