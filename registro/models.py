@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Usuario(models.Model):
-    correo = models.EmailField()
+    correo = models.EmailField(primary_key=True)
     contrasenia = models.CharField(max_length=100)
     celular = models.BigIntegerField()
     direccion = models.CharField(max_length=100)

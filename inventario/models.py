@@ -19,6 +19,7 @@ class Prenda(models.Model):
         max_length=2,
         choices=TIPO_CHOICES,
         default=CHAQUETA,
+        primary_key=True
     )
     cantidad = models.IntegerField()
     precio = models.IntegerField()
@@ -30,7 +31,7 @@ class Prenda(models.Model):
 
 
 class Colore(models.Model):
-    color = models.CharField(max_length=50)
+    color = models.CharField(max_length=50, primary_key=True)
     hexadecimal = models.CharField(max_length=7)
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
@@ -53,6 +54,7 @@ class Talla(models.Model):
         max_length=2,
         choices=TALLA_CHOICES,
         default=M,
+        primary_key=True
     )
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     color = models.ForeignKey(Colore, on_delete=models.CASCADE)
