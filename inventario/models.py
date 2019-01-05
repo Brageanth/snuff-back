@@ -70,7 +70,7 @@ class Estampado(models.Model):
         (ARTE, 'Arte'),
         (MUSICA, 'Musica'),
     )
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, primary_key=True)
     categoria = models.CharField(
         max_length=2,
         choices=CATEGORIA_CHOICES,
