@@ -19,4 +19,4 @@ class Personalizada(models.Model):
 
 
     def __str__(self):
-        return self.prenda
+        return self.prenda.tipo
