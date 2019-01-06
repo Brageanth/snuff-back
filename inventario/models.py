@@ -36,10 +36,10 @@ class Colore(models.Model):
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     imagen = models.ImageField()
-    
-    def publish(self):
+
+    def save(self, *args, **kwargs):
         self.color = self.color + self.prenda
-        self.save()
+        super(Colore, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.color
