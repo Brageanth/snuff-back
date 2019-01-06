@@ -36,9 +36,9 @@ class Colore(models.Model):
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     imagen = models.ImageField()
-
+    
     class Meta:
-        unique_together = (("color", "prenda"),)
+        unique_together = (("color", "prenda"),)  
 
     def __str__(self):
         return self.color
