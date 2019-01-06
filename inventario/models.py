@@ -39,7 +39,7 @@ class Colore(models.Model):
 
     def save(self, *args, **kwargs):
         self.color = self.color + self.prenda
-        super(Colore, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.color
