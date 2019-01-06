@@ -31,14 +31,15 @@ class Prenda(models.Model):
 
 
 class Colore(models.Model):
-    color = models.CharField(max_length=50)
+    color = models.CharField(max_length=50, primary_key=True)
     hexadecimal = models.CharField(max_length=7)
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     imagen = models.ImageField()
     
-    class Meta:
-        unique_together = ("prenda", "color")  
+    def publish(self):
+        self.color = self.color + self.prenda
+        self.save()
 
     def __str__(self):
         return self.color
