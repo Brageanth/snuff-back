@@ -37,9 +37,12 @@ class Colore(models.Model):
     cantidad = models.IntegerField()
     imagen = models.ImageField()
 
-    def save(self, *args, **kwargs):
-        self.color = self.color + self.prenda
-        super().save(*args, **kwargs)
+    def combined_fields(self): 
+        return '{} {}'.format(self.color, self.prenda) 
+
+    def save(self, *args, **kwargs): 
+        self.color = self.combined_fields() 
+        super(Colore, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.color
