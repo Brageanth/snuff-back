@@ -31,18 +31,11 @@ class Prenda(models.Model):
 
 
 class Colore(models.Model):
-    color = models.CharField(max_length=50)
+    color = models.CharField(max_length=50, primary_key=True)
     hexadecimal = models.CharField(max_length=7)
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    imagen = models.ImageField(primary_key=True)
-
-    def combined_fields(self): 
-        return '{} {}'.format(self.color, self.prenda) 
-
-    def save(self, *args, **kwargs): 
-        self.color = self.combined_fields() 
-        super(Colore, self).save(*args, **kwargs)
+    imagen = models.ImageField()
 
     def __str__(self):
         return self.color
@@ -66,9 +59,6 @@ class Talla(models.Model):
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     color = models.ForeignKey(Colore, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-
-    class Meta:
-        unique_together = (("color", "prenda", "talla"),)
 
     def __str__(self):
         return self.prenda.tipo
