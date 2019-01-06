@@ -31,7 +31,7 @@ class Prenda(models.Model):
 
 
 class Colore(models.Model):
-    color = models.CharField(max_length=50, primary_key=True)
+    color = models.CharField(max_length=50)
     hexadecimal = models.CharField(max_length=7)
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
