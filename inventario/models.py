@@ -53,8 +53,7 @@ class Talla(models.Model):
     talla = models.CharField(
         max_length=2,
         choices=TALLA_CHOICES,
-        default=M,
-        primary_key=True
+        default=M
     )
     prenda = models.ForeignKey(Prenda, on_delete=models.CASCADE)
     color = models.ForeignKey(Colore, on_delete=models.CASCADE)
