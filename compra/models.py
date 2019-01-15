@@ -16,7 +16,7 @@ class Personalizada(models.Model):
     entregada = models.BooleanField()
     carrito = models.BooleanField()
     pagado = models.BooleanField()
-    imagen = models.CharField(max_length=100, primary_key=True)
+    imagen = models.CharField(max_length=100)
 
     def __str__(self):
         return self.prenda.tipo
