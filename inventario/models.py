@@ -81,6 +81,7 @@ class Estampado(models.Model):
     color = models.ForeignKey(Colore, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
     stock = models.BooleanField()
+    cantidad = models.
     imagenPrenda = models.ImageField()
     imagenEstampado = models.ImageField()
     imagenPreview = models.ImageField()
