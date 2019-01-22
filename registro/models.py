@@ -11,3 +11,10 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.correo
+
+class UsuarioReset(models.Model):
+    correo = models.EmailField(primary_key=True)
+
+
+    def __str__(self):
+        return self.correo

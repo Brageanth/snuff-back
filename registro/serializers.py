@@ -1,4 +1,4 @@
-from .models import Usuario
+from .models import Usuario, UsuarioReset
 from rest_framework import serializers
 
 
@@ -10,5 +10,5 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
 class ResetSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Usuario
+        model = UsuarioReset
         fields = ('correo',)
