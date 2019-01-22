@@ -11,4 +11,4 @@ class UsuarioSerializer(serializers.ModelSerializer):
 class ResetSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuarioReset
-        fields = ('correo',)
+        fields = '__all__'
