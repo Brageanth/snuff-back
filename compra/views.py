@@ -30,7 +30,7 @@ def personalizada_detail(request, pk):
     Retrieve, update or delete a code personalizada.
     """
     try:
-        personalizada = personalizada.objects.get(pk=pk)
+        personalizada = Personalizada.objects.get(pk=pk)
     except personalizada.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
