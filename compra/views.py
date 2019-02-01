@@ -19,6 +19,7 @@ def personalizadaView(request, format=None):
     elif request.method == 'POST':
         serializer = PersonalizadaSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
+            print(serializer)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
