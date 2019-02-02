@@ -4,19 +4,22 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import urllib3
+import json
 
 http = urllib3.PoolManager()
 
 @api_view(['GET', 'POST'])
 def consulta_bancos(request):
     if request.method == 'GET':
-        r = http.request('POST', 'https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', body={
-            "test": true,
+        data = {
+            "test": True,
             "language": "es",
             "command": "PING",
             "merchant": {
                 "apiLogin": "pRRXKOl8ikMmt9u",
                 "apiKey": "4Vj8eK4rloUd272L48hsrarnUA"
             }
-        }, headers={'Content-Type': 'application/json', 'Accept': 'application/json'})
-        return Response(r)
+        }
+        encoded_data = json.dumps(data).encode('utf-8')
+        r = http.request('POST', 'https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', body=encoded_data, headers={'Content-Type': 'application/json', 'Accept': 'application/json'})
+        return Response(json.loads(r.data.decode('utf-8'))['json'])
