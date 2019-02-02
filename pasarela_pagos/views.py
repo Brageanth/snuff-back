@@ -21,5 +21,6 @@ def consulta_bancos(request):
             }
         }
         encoded_data = json.dumps(data).encode('utf-8')
-        r = http.request('POST', 'https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', body=encoded_data, headers={'Content-Type': 'application/json', 'Accept': 'application/json'})
-        return Response(json.loads(r.data.decode('utf-8'))['json'])
+        r = http.request('POST', 'https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi', body=data, headers={'Content-Type': 'application/json', 'Accept': 'application/json'})
+        print(r)
+        return Response(r)
