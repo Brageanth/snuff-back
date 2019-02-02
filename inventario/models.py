@@ -85,6 +85,9 @@ class Estampado(models.Model):
     imagenPrenda = models.ImageField()
     imagenEstampado = models.ImageField()
     imagenPreview = models.ImageField()
+    imagenGaleria1 = models.ImageField(null=True, blank=True)
+    video = models.FileField(null=True, blank=True)
+    cancion = models.FileField(null=True, blank=True)
 
     def __str__(self):
         return self.nombre
