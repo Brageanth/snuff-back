@@ -1,5 +1,5 @@
 from django.urls import path
-from empresa import views
+from pasarela_bancos import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
