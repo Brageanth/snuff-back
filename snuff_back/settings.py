@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'compra',
     'campania',
     'empresa',
+    'pasarela_bancos',
 ]
 
 MIDDLEWARE = [
