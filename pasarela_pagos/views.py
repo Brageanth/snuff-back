@@ -8,7 +8,7 @@ import urllib3
 http = urllib3.PoolManager()
 
 @api_view(['GET', 'POST'])
-def consulta_bancos(self):
+def consulta_bancos(request):
     if request.method == 'GET':
         r = http.request('POST', 'https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', body={
             "test": true,
