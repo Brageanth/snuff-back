@@ -85,7 +85,12 @@ class Estampado(models.Model):
     imagenPrenda = models.ImageField()
     imagenEstampado = models.ImageField()
     imagenPreview = models.ImageField()
+    imagenGaleria0 = models.ImageField(null=True, blank=True)
     imagenGaleria1 = models.ImageField(null=True, blank=True)
+    imagenGaleria2 = models.ImageField(null=True, blank=True)
+    imagenGaleria3 = models.ImageField(null=True, blank=True)
+    imagenGaleria4 = models.ImageField(null=True, blank=True)
+    imagenGaleria5 = models.ImageField(null=True, blank=True)
     video = models.FileField(null=True, blank=True)
     cancion = models.FileField(null=True, blank=True)
 
