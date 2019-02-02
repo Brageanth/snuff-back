@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 @api_view(['GET', 'POST'])
 def consulta_bancos(requests):
-    if request.method == 'POST':
+    if request.method == 'GET':
         r = requests.post("https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi", data={
             "test": true,
             "language": "es",
