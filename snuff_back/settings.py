@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'campania',
     'empresa',
     'pasarela_pagos',
+    'urllib3',
 ]
 
 MIDDLEWARE = [
