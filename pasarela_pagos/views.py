@@ -18,4 +18,4 @@ def consulta_bancos(request):
             }
         }
         encoded_data = json.dumps(data).encode('utf-8')
-        return requests.post('https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi', data=encoded_data)
+        return requests.post('https://api.payulatam.com/reports-api/4.0/service.cgi', data=encoded_data)
