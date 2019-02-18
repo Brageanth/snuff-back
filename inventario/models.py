@@ -15,6 +15,7 @@ class Prenda(models.Model):
         (CAMISETA, 'Camiseta'),
         (BUSOCAPOTA, 'Buso con capota'),
     )
+    genero = models.BooleanField()
     tipo = models.CharField(
         max_length=2,
         choices=TIPO_CHOICES,

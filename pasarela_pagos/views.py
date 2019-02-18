@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 import requests
 import json
 
@@ -9,13 +10,13 @@ import json
 def consulta_bancos(request):
     if request.method == 'GET':
         data = {
-            "test": True,
-            "language": "es",
-            "command": "PING",
-            "merchant": {
-                "apiLogin": "pRRXKOl8ikMmt9u",
-                "apiKey": "4Vj8eK4rloUd272L48hsrarnUA"
-            }
-        }
+   "test": false,
+   "language": "es",
+   "command": "GET_PAYMENT_METHODS",
+   "merchant": {
+      "apiLogin": "pRRXKOl8ikMmt9u",
+      "apiKey": "4Vj8eK4rloUd272L48hsrarnUA"
+   }
+}
         encoded_data = json.dumps(data).encode('utf-8')
-        return requests.post('https://api.payulatam.com/reports-api/4.0/service.cgi', data=encoded_data)
+        return Response(requests.post('https://sandbox.api.payulatam.com/reports-api/4.0/service.cgi', data=encoded_data, headers={'Content-Type': 'application/json', 'Accept': 'application/json'}))
